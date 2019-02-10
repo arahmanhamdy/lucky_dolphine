@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="lucky_view_stock_picking_form" model="ir.ui.view">
+            <field name="name">Lucky Stock Picking form view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='picking_type_id']" position="after">
+                    <field name="sale_id" attrs="{'invisible':[('sale_id','=',False)]}"/>
+                    <field name="vessel_id" attrs="{'invisible':[('sale_id','=',False)]}"/>
+                    <field name="delivery_port_id" attrs="{'invisible':[('sale_id','=',False)]}"/>
+                    <field name="client_order_ref" attrs="{'invisible':[('sale_id','=',False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
