@@ -36,7 +36,6 @@ class MailComposeMessageInherit(models.TransientModel):
             records_names.append((record.name or 'n/a').replace("/", "_"))
             client_ref_names.append((record.client_order_ref or 'n/a').replace("/", "_"))
 
-
         res['value']['attachment_ids'] = [(4, attachment.id) for attachment in attachments]
 
         res['value']['subject'] = "{company_name} your RFQs {client_refs} => {our_refs}".format(
@@ -47,7 +46,7 @@ class MailComposeMessageInherit(models.TransientModel):
         )
         return res
 
-    def send_mail_action(self):
+    def action_send_mail(self):
         res = super(MailComposeMessageInherit, self).send_mail()
         if not self.env.context.get("multi_quotations_ids"):
             return res
