@@ -4,7 +4,7 @@ from odoo import models, api, fields, _
 
 class SaleForecastingReportXls(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
-    _name = 'report.lucky_sales.sale_order_xls_report'
+    _name = 'report.lucky_sale_reports.sale_order_xls_report'
 
     def generate_xlsx_report(self, workbook, data, sale_orders):
         worksheet = workbook.add_worksheet("Sale Order Report")
