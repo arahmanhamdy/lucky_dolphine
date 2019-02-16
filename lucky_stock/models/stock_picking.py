@@ -21,7 +21,7 @@ class StockQuantPackage(models.Model):
             return False
 
     picking_id = fields.Many2one('stock.picking', compute=_get_picking)
-    vessel_id = fields.Many2one(related="picking_id.vessel_id", store=True)
+    vessel_id = fields.Many2one(related="picking_id.vessel_id")
     delivery_port_id = fields.Many2one(related="picking_id.delivery_port_id")
     client_order_ref = fields.Char(related="picking_id.client_order_ref")
 

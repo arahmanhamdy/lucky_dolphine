@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-6">
                         <h3>
-                            <span t-field="o.vessel_id.name"/>
+                            <span t-field="o.picking_id.vessel_id.name"/>
                         </h3>
                         <h5>
                             <span t-field="o.picking_id.sale_id.batch_id.name"/>
