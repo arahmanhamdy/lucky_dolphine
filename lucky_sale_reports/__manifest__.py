@@ -6,9 +6,9 @@
     'description': """
         This module add the following features in sale module
             1- Xls report for sale order.\n
-            1- Send multiple quotations by mail with xls files.\n
+            2- Send multiple quotations by mail with xls files.\n
     """,
-    'depends': ['sale', 'report_xlsx'],
+    'depends': ['sale_management', 'report_xlsx'],
     'data': [
         # data
         'data/mail_template_data_view.xml',
