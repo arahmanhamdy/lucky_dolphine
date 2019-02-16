@@ -88,9 +88,8 @@ class SaleOrderBatch(models.Model):
 
     @api.multi
     def write(self, vals):
-        res = super(SaleOrderBatch).write(vals)
+        super().write(vals)
         for rec in self:
             for order in rec.order_ids:
                 for changed_attr in vals:
                     setattr(order, changed_attr, vals[changed_attr])
-        return res

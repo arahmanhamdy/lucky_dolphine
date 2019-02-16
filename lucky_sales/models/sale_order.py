@@ -23,7 +23,7 @@ class SaleOrderInherit(models.Model):
 
     @api.model
     def create(self, vals_list):
-        order = super(SaleOrderInherit).create(vals_list)
+        order = super().create(vals_list)
 
         # link order to a previous batch or create a new one
         batch_model = self.env['sale.order.batch']
