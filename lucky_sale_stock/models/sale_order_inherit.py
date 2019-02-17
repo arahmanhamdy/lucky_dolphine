@@ -7,8 +7,10 @@ from datetime import timedelta
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    pricelist_id = fields.Many2one('product.pricelist', string='Pricelist', related='order_id.pricelist_id')
+
     @api.multi
-    @api.onchange('product_id')
+    @api.onchange('product_id', 'pricelist_id')
     def change_product_price_depend_on_qty(self):
         for line in self:
             min_product_vendor_price = 0
@@ -30,8 +32,9 @@ class SaleOrderLine(models.Model):
                 product_date = fields.Datetime.now() - timedelta(days=pricelist_updated_range)
                 product_supplierinfo_objects = self.env['product.supplierinfo'].sudo().search(
                     [('product_tmpl_id', '=', line.product_id.product_tmpl_id.id), ('create_date', '>=', product_date)])
-                min_product_vendor_price = min([supplier_info.price for supplier_info in product_supplierinfo_objects if
-                                                product_supplierinfo_objects])
+                if product_supplierinfo_objects:
+                    min_product_vendor_price = min(
+                        [supplier_info.price for supplier_info in product_supplierinfo_objects])
                 if min_product_vendor_price > 0:
                     product_percentage = (
-                                         min_product_vendor_price - last_product_purchase_price) / min_product_vendor_price
+                                             min_product_vendor_price - last_product_purchase_price) / min_product_vendor_price
