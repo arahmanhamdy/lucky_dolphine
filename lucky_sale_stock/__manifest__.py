@@ -8,7 +8,7 @@
             1- Add price list lines depend on product qty.\n
             2- Edit price in sale order line depend on product qty and price list.\n
     """,
-    'depends': ['sale_management', 'stock'],
+    'depends': ['sale_management', 'stock', 'purchase', ],
     'data': [
         # security
         'security/ir.model.access.csv',

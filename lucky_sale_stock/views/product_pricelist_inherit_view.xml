@@ -16,7 +16,7 @@
                         </group>
                         <group>
                             <field name="product_pricelist_line_ids"
-                                   attrs="{'invisible': [('qty_applied_on', '=', False)],'required': [('qty_applied_on', '!=', False)]}"/>
+                                   attrs="{'invisible': [('qty_applied_on', '=', False)]}"/>
                         </group>
                     </div>
                 </div>
